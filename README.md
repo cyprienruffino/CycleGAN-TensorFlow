@@ -1,5 +1,5 @@
 # CycleGAN-TF-Keras
-CycleGAN implementation in tensorflow.keras
+CycleGAN implementation in tensorflow using keras layrs
 
 Supports up to 2 GPUs
 

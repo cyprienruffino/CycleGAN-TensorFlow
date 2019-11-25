@@ -8,9 +8,9 @@ from datasets import from_images
 from utils.log import create_weight_histograms, custom_bar
 
 
-# tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
-# warnings.simplefilter(action='ignore', category=FutureWarning)
-# warnings.simplefilter(action='ignore', category=UserWarning)
+tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
+warnings.simplefilter(action='ignore', category=FutureWarning)
+warnings.simplefilter(action='ignore', category=UserWarning)
 
 
 def from_pool(pool, real, pool_size, batch_size=1):

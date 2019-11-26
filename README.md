@@ -23,7 +23,7 @@ python src/train.py config_file dataA_path dataB_path path_to_checkpoints epoch
 ```
 ### Generating samples
 ```shell
-python src/generate_samples.py checkpoint_path files_path output_path
+python src/generate.py checkpoint_path files_path output_path
 ```
 
 ## Dependencies

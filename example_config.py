@@ -34,10 +34,10 @@ class CustomConfig(AbstractConfig):
         self.genA_args = {"channels_out": 3, "name": "GenA"}
 
         self.genB = cyclegan_gen_9.create_network
-        self.genB_args = {"channels_out": 4, "name": "GenB"}
+        self.genB_args = {"channels_out": 3, "name": "GenB"}
 
         self.discA = cyclegan_disc.create_network
         self.discA_args = {"channels": 3, "name": "DiscA"}
 
         self.discB = cyclegan_disc.create_network
-        self.discB_args = {"channels": 4, "name": "DiscB"}
+        self.discB_args = {"channels": 3, "name": "DiscB"}

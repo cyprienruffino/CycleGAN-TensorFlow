@@ -19,7 +19,7 @@ class CustomConfig(AbstractConfig):
         # Training settings
         self.model = CycleGANBase
         self.batch_size = 1
-        self.epochs = 2000
+        self.epochs = 200
         self.dataA_channels = 3
         self.dataB_channels = 3
         self.dataset_size = 1500

@@ -12,18 +12,19 @@ class AbstractConfig:
             10 ** 8)
 
         # Training settings
-        self.model = None
         self.batch_size = None
         self.epochs = None
 
         self.dataA_channels = None
         self.dataB_channels = None
         self.dataset_size = None
+        self.resize_size = None
         self.image_size = None
 
         self.pool_size = None
         self.cyc_factor = None
-        self.learning_rate = None
+        self.initial_learning_rate = None
+        self.final_learning_rate = None
 
         # Network setup
         self.genA = None

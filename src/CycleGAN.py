@@ -65,9 +65,9 @@ class CycleGANBase:
 
     def setup_datasets(self, dataA_path, dataB_path):
         iter_a = from_images.iterator(dataA_path, self.cfg.dataset_size, self.cfg.batch_size, self.cfg.dataA_channels,
-                                      self.cfg.image_size)
+                                      self.cfg.resize_size, self.cfg.image_size)
         iter_b = from_images.iterator(dataB_path, self.cfg.dataset_size, self.cfg.batch_size, self.cfg.dataB_channels,
-                                      self.cfg.image_size)
+                                      self.cfg.resize_size, self.cfg.image_size)
 
         self.sess.run(iter_a.initializer)
         self.sess.run(iter_b.initializer)
@@ -147,10 +147,10 @@ class CycleGANBase:
                 self.dB_obj = (tf.reduce_mean(self.ganB ** 2) + tf.reduce_mean((self.discB.output - 1) ** 2)) / 2
 
     def create_optimizers(self):
-        lr = tf.Variable(self.cfg.learning_rate)
+        lr = tf.Variable(self.cfg.initial_learning_rate)
         self.decayed_lr = tf.train.polynomial_decay(
             lr, tf.maximum(self.global_step - (self.cfg.epochs // 2), 0),
-            self.cfg.epochs // 2, self.cfg.learning_rate // 100)
+            self.cfg.epochs // 2, self.cfg.final_learning_rate)
 
         optimizer = tf.train.AdamOptimizer(self.decayed_lr, beta1=0.5)
 

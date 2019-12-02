@@ -1,5 +1,10 @@
 import warnings
-warnings.filterwarnings("ignore")
+
+
+warnings.simplefilter(action='ignore', category=FutureWarning)
+warnings.simplefilter(action='ignore', category=UserWarning)
+
+from CycleGAN import CycleGANBase
 
 import os
 import shutil
@@ -25,7 +30,7 @@ def do_run(filepath, dataA_path, dataB_path, checkpoint_resume_path=None, epoch=
         os.mkdir(checkpoints_dir)
         shutil.copy2(filepath, os.path.join("runs", name, "config.py"))
 
-    model = config.model(config, dataA_path, dataB_path, logs_dir, checkpoints_dir, checkpoint_resume_path, epoch=epoch)
+    model = CycleGANBase(config, dataA_path, dataB_path, logs_dir, checkpoints_dir, checkpoint_resume_path, epoch=epoch)
     model.train()
     model.reset_session()
 

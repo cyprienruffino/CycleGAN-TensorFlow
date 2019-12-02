@@ -42,14 +42,3 @@ def iterator(path, dataset_size, batch_size, channels, resize_size, crop_size):
         .repeat()
 
     return dataset.make_initializable_iterator()
-
-
-def oneshot_iterator(path, dataset_size, batch_size, channels):
-    filenames = list(map(lambda p: os.path.join(path, p), os.listdir(path)))[:dataset_size]
-    files = tf.constant(filenames)
-    dataset = tf.data.Dataset.from_tensor_slices(files) \
-        .map(partial(_parse, channels=channels)) \
-        .map(lambda x: (x / 127.5) - 1) \
-        .batch(batch_size)
-
-    return dataset.make_one_shot_iterator()

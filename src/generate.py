@@ -25,7 +25,9 @@ def main(checkpoint_path, files_path, output_path):
         os.mkdir(output_path)
 
     for name in progressbar.ProgressBar()(os.listdir(files_path)):
-        img = (cv2.imread(os.path.join(files_path, name), cv2.IMREAD_UNCHANGED) / 127.5) - 1
+        bgr_img = cv2.imread(os.path.join(files_path, name), cv2.IMREAD_UNCHANGED)
+        rgb_img = cv2.cvtColor(bgr_img, cv2.COLOR_BGR2RGB)
+        img = (rgb_img / 127.5) - 1
         out = (mod.predict(np.expand_dims(img, axis=0)) + 1) * 127.5
         cv2.imwrite(os.path.join(output_path, name), out[0])
 

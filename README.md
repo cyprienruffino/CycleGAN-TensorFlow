@@ -1,4 +1,4 @@
-# CycleGAN-TF-Keras
+# CycleGAN-TensorFlow
 CycleGAN implementation in tensorflow using keras layers
 
 Supports up to 2 GPUs

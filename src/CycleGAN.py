@@ -35,10 +35,10 @@ class CycleGANBase:
         self.checkpoints_dir = checkpoints_dir
         self.global_step = tf.Variable(epoch, trainable=False)
 
-        if cfg.num_gpu == 0:
+        if cfg.gpus == 0:
             self.device_0 = "/cpu:0"
             self.device_1 = "/cpu:0"
-        elif cfg.num_gpu == 1:
+        elif cfg.gpus == 1:
             self.device_0 = "/gpu:0"
             self.device_1 = "/gpu:0"
         else:

@@ -76,7 +76,6 @@ class CycleGANBase:
         self.inputB = iter_b.get_next()
 
     def build_models(self):
-        # A: RGB, B: Pol
         with tf.device(self.device_0):
             self.genA = self.cfg.genA(self.inputB, **self.cfg.genA_args)
             self.discA = self.cfg.discA(self.inputA, **self.cfg.discA_args)
